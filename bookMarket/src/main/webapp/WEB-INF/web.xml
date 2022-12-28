@@ -24,6 +24,12 @@
 	</form-login-config>
 	</login-config>
 	<!-- //FORM 인증 처리 기법을 설정하도록 <auth-method>요소를 작성 -->
+	
+	<!-- 오류가 발생했을 때 오류 상태와 오류 페이지를 출력하도록 작성 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/web_jsp/bookMarket/exceptionNoPage.jsp</location>
+	</error-page>
 </web-app>
 			
 			
