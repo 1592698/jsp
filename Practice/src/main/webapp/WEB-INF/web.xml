@@ -33,16 +33,16 @@
 	<!-- //FORM 인증 처리 기법을 설정하도록 <auth-method>요소를 작성 -->
 	
 	<!-- 오류가 발생했을 때 오류 상태와 오류 페이지를 출력하도록 작성 -->
-	<error-page>
+	<!-- <error-page>
 		<error-code>500</error-code>
 		<location>/web_jsp/exception/errorCode_error.jsp</location>
 	</error-page>
-	
-	<error-page>
+	 -->
+	<!--  <error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/web_jsp/exception/exceptionType_error.jsp</location>
 	</error-page>
-	
+	-->
 	<error-page>
 		<error-code>404</error-code>
 		<location>/web_jsp/market/exceptionNoPage.jsp</location>
