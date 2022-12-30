@@ -6,6 +6,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script type="text/javascript" src="./resources/js/validation.js" defer></script>
 <meta charset="UTF-8">
 <title>상품 등록</title>
 </head>
@@ -111,7 +112,7 @@
 			
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10">
-					<input type="submit" class="btn btn-primary" value="등록">
+					<input type="submit" class="btn btn-primary" value="등록" onclick = "CheckAddProduct()">
 				</div>
 			</div>
 		</form>

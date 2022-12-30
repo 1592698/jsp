@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="java.util.ArrayList" %>
-<%@ page import ="market.ver01.dto.Product" %>
-<%@ page import ="market.ver01.dao.ProductRepository" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="bookMarket.ver01.dto.Book"%>
+<%@ page import="bookMarket.ver01.dao.BookRepository"%>
     
 <!DOCTYPE html>
 <html>
@@ -43,9 +43,9 @@ String cartId = session.getId();%>
 				
 				<%
 					int sum =0;
-					ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
+					ArrayList<Book> cartList = (ArrayList<Book>) session.getAttribute("cartlist");
 					if(cartList ==null){
-						cartList=new ArrayList<Product>();
+						cartList=new ArrayList<Book>();
 						session.setAttribute("cartlist", cartList);
 					}
 					//for(int i=0; i<cartList.size(); i++){ //상품리스트 하나씩 출력하기
@@ -53,18 +53,18 @@ String cartId = session.getId();%>
 					//	int total =product.getUnitPrice() * product.getQuantity();
 					//	sum = sum + total;
 					
-					for(Product product : cartList){
-						int total = product.getUnitPrice() * product.getQuantity();
+					for(Book book : cartList){
+						int total = book.getUnitPrice() * book.getQuantity();
 						sum = sum + total;
 					
 					
 					%>
 					<tr>
-						<td> <%=product.getProductId() %> - <%=product.getPname() %></td>
-						<td> <%=product.getUnitPrice() %></td>
-						<td> <%=product.getQuantity()%></td>
+						<td> <%=book.getBookId() %> - <%=book.getName() %></td>
+						<td> <%=book.getUnitPrice() %></td>
+						<td> <%=book.getQuantity()%></td>
 						<td> <%=total %></td>
-						<td><span class="badge badge-danger"  onclick="removeCartById('<%=product.getProductId()%>')">삭제</span></td>
+						<td><span class="badge badge-danger"  onclick="removeCartById('<%=book.getBookId()%>')">삭제</span></td>
 					
 					</tr>
 					
@@ -80,7 +80,7 @@ String cartId = session.getId();%>
 						<th></th>
 					</tr>		
 			</table>
-			<a href="./products.jsp" class="btn btn-secondary"> &laquo; 쇼핑계속하기</a>
+			<a href="./books.jsp" class="btn btn-secondary"> &laquo; 쇼핑계속하기</a>
 		</div>	
 		<form name="frmCart" method="post">
 			<input type="hidden" name="id">

@@ -72,7 +72,7 @@
     	newBook.setTotalPages(tPage);
     	newBook.setReleaseDate(releaseDate);
     	newBook.setCondition(condition);
-    	newBook.setFilename(fileName);
+    	newBook.setFileName(fileName);
     	
     	dao.addBook(newBook);
     	response.sendRedirect("books.jsp");

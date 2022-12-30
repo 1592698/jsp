@@ -15,6 +15,8 @@ public class Book {
 	private String condition;// 신규 도서 or 중고 도서 or e-book
 	
 	private String fileName; //이미지 파일명
+	private int quantity; //장바구니에 담은 개수
+	
 	
 	public Book(){
 		super();
@@ -136,11 +138,21 @@ public class Book {
 		this.condition = condition;
 	}
 
-	public String getFilename() {
+	
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getFileName() {
 		return fileName;
 	}
 
-	public void setFilename(String fileName) {
+	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
 	

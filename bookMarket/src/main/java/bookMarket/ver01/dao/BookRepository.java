@@ -26,7 +26,7 @@ public class BookRepository {
 		book1.setTotalPages(300);
 		book1.setReleaseDate("2021년 10월 15일");
 		book1.setCondition("New");
-		book1.setFilename("a111.png");
+		book1.setFileName("a111.png");
 		
 		Book book2 = new Book("a222", "쉬운천국", 11000);
 		book2.setAutor("유지혜");
@@ -37,7 +37,7 @@ public class BookRepository {
 		book2.setTotalPages(277);
 		book2.setReleaseDate("2020년 11월 24일");
 		book2.setCondition("Refurbished");
-		book2.setFilename("a222.png");
+		book2.setFileName("a222.png");
 		
 		Book book3 = new Book("a333", "파친코", 8000);
 		book3.setAutor("이민진");
@@ -48,7 +48,7 @@ public class BookRepository {
 		book3.setTotalPages(427);
 		book3.setReleaseDate("2022년 8월 5일");
 		book3.setCondition("old");
-		book3.setFilename("a333.png");
+		book3.setFileName("a333.png");
 		
 		listOfBooks.add(book1);
 		listOfBooks.add(book2);
