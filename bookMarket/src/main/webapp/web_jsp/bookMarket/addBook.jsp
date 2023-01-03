@@ -29,68 +29,68 @@
 			<div class="form-group row">
 				<label class="col-sm-2">상품 코드</label>
 				<div class="col-sm-3">
-					<input type="text" name="bookId" class="form-control">
+					<input type="text" name="bookId" id="bookId" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">도서명</label>
 				<div class="col-sm-3">
-					<input type="text" name="name" class="form-control">
+					<input type="text" name="name" id="name" class="form-control">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">가격</label>
 				<div class="col-sm-3">
-					<input type="text" name="unitPrice" class="form-control">
+					<input type="text" name="unitPrice" id="unitPrice" class="form-control">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">저자</label>
 				<div class="col-sm-5">
-					<textarea name="autor" cols="50" rows="2" class="form-control"></textarea>
+					<textarea name="author" id="author" cols="50" rows="2" class="form-control"></textarea>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">상세 정보</label>
 				<div class="col-sm-5">
-					<textarea name="description" cols="50" rows="2" class="form-control"></textarea>
+					<textarea name="description" id="description" cols="50" rows="2" class="form-control"></textarea>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">출판사</label>
 				<div class="col-sm-3">
-					<input type="text" name="publisher" class="form-control">
+					<input type="text" name="publisher" id="publisher" class="form-control">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">분류</label>
 				<div class="col-sm-3">
-					<input type="text" name="category" class="form-control">
+					<input type="text" name="category" id="category" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2">재고 수</label>
 				<div class="col-sm-3">
-					<input type="text" name="unitsInStock" class="form-control">
+					<input type="text" name="unitsInStock" id="unitsInStock" class="form-control">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">페이지 수</label>
 				<div class="col-sm-3">
-					<input type="text" name="totalPages" class="form-control">
+					<input type="text" name="totalPages" id="totalPages" class="form-control">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">출판일</label>
 				<div class="col-sm-3">
-					<input type="text" name="releaseDate" class="form-control">
+					<input type="text" name="releaseDate" id="releaseDate" class="form-control">
 				</div>
 			</div>
 			
@@ -112,7 +112,7 @@
 			
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10">
-					<input type="submit" class="btn btn-primary" value="등록" onclick = "CheckAddProduct()">
+					<input type="submit" class="btn btn-primary" value="등록" onclick = "CheckAddBook()">
 				</div>
 			</div>
 		</form>

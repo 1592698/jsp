@@ -5,7 +5,7 @@ public class Book {
 	private String bookId; //도서 아이디
 	private String name; //도서명
 	private Integer unitPrice; //가격
-	private String autor; //저자
+	private String author; //저자
 	private String description; //설명
 	private String publisher; //출판사
 	private String category; //분류
@@ -59,15 +59,13 @@ public class Book {
 	}
 
 
-	public String getAutor() {
-		return autor;
+	public String getAuthor() {
+		return author;
 	}
 
-
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
-
 
 	public String getDescription() {
 		return description;

@@ -6,6 +6,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.oreilly.servlet.*" %>
 <%@ page import="com.oreilly.servlet.multipart.*" %>
+<%@ include file = "dbconn.jsp" %>
     <%
     	request.setCharacterEncoding("UTF-8");
     	
@@ -58,24 +59,26 @@
     	String fname=(String) files.nextElement();
     	String fileName = multi.getFilesystemName(fname);
     	
-    	BookRepository dao = BookRepository.getInstance();
+    	String sql = "insert into book values(?,?,?,?,?,?,?,?,?,?,?,?)";
+    	pstmt = conn.prepareStatement(sql);
+    	pstmt.setString(1,bookId);
+    	pstmt.setString(2,name);
+    	pstmt.setInt(3,price);
+    	pstmt.setString(4,autor);
+    	pstmt.setString(5,description);
+    	pstmt.setString(6,publisher);
+    	pstmt.setString(7,category);
+    	pstmt.setLong(8,stock);
+    	pstmt.setLong(9,tPage);
+    	pstmt.setString(10,releaseDate);
+    	pstmt.setString(11,condition);
+    	pstmt.setString(12,fileName);
     	
-    	Book newBook = new Book();
-    	newBook.setBookId(bookId);
-    	newBook.setName(name);
-    	newBook.setAutor(autor);
-    	newBook.setUnitPrice(price);
-    	newBook.setDescription(description);
-    	newBook.setPublisher(publisher);
-    	newBook.setCategory(category);
-    	newBook.setUnitsInStock(stock);
-    	newBook.setTotalPages(tPage);
-    	newBook.setReleaseDate(releaseDate);
-    	newBook.setCondition(condition);
-    	newBook.setFileName(fileName);
-    	
-    	dao.addBook(newBook);
-    	response.sendRedirect("books.jsp");
+    	if (pstmt != null)
+        	pstmt.close();
+        	if (conn!= null)
+        	conn.close();
+        	response.sendRedirect("books.jsp");
     	
  %>
     	

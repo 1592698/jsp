@@ -47,7 +47,7 @@
             <h3><%=book.getName() %></h3>
             <p><%=book.getDescription() %></p>
             <p><b>도서 코드 : </b><span class= "badge badge-danger"><%=book.getBookId()%></span></p>
-            <p><b>저자 : </b><%=book.getAutor()%></p>
+            <p><b>저자 : </b><%=book.getAuthor()%></p>
             <p><b>페이지 : </b><%=book.getTotalPages()%></p>
             <p><b>출판사 : </b><%=book.getPublisher()%></p>
             <p><b>분류 : </b><%=book.getCategory()%></p>
