@@ -35,8 +35,8 @@
             while (rs.next()) {
          %>
 			<div class="row-md-4">
-			<img src="c:/upload/<%=rs.getString("b_fileName") %>" style="width:300px" alt="">
-			<img src="${pageContext.request.contextPath}/resources/images/<%=rs.getString("b_fileName")%>" style="width: 100px" alt="">
+			<!--  <img src="c:/upload/<%=rs.getString("b_fileName") %>" style="width:300px" alt="">
+			--> <img src="${pageContext.request.contextPath}/resources/images/<%=rs.getString("b_fileName")%>" style="width: 100px" alt="">
 				<h3><%=rs.getString("b_category") + " " + rs.getString("b_name")%> / <%=rs.getString("b_id")%></h3>
 				<p><%=rs.getString("b_description") %>
 				<p><%=rs.getString("b_author") +" "+ rs.getString("b_publisher") +" "+ rs.getInt("b_unitPrice")%>원
