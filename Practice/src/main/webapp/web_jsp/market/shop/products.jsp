@@ -9,7 +9,7 @@
 <title>상품목록</title>
 </head>
 <body>
-   <jsp:include page="menu.jsp" />
+   <jsp:include page="../inc/menu.jsp" />
    <div class="jumbotron">
       <div class="container">
          <h1 class="display-3">상품목록</h1>
@@ -17,7 +17,7 @@
    </div>
    
    <div class="container">
-   <%@ include file="dbconn.jsp" %>
+   <%@ include file="../inc/dbconn.jsp" %>
       <div class="row" align="center">
          <% 
             String sql = "select * from product";
@@ -26,8 +26,6 @@
             while (rs.next()) {
          %>
          <div class="col-md-4">
-            <img src="c:/upload/<%=rs.getString("p_fileName")%>"
-            style = "width: 300px" alt="">
             <img src="${pageContext.request.contextPath}/resources/images/<%=rs.getString("p_fileName")%>"
                style = "width: 300px" alt="">
             <h3><%=rs.getString("p_name")%></h3>
@@ -49,6 +47,6 @@
       </div>
       <hr>
    </div>
-   <jsp:include page="footer.jsp" />
+   <jsp:include page="../inc/footer.jsp" />
 </body>
 </html>

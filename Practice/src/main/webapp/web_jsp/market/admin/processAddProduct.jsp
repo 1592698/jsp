@@ -6,7 +6,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.oreilly.servlet.*" %>
 <%@ page import="com.oreilly.servlet.multipart.*" %>
-<%@ include file = "dbconn.jsp" %>
+<%@ include file = "../inc/dbconn.jsp" %>
     <%
     	request.setCharacterEncoding("UTF-8");
     	

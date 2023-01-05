@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<jsp:include page="menu.jsp" />
+<jsp:include page="../inc/menu.jsp" />
 <div class="jumbotron">
 	<div class="container">
 		<h1 class="display-3">상품정보</h1>
@@ -61,6 +61,6 @@
 		</div>
 	</div>
 </div>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../inc/footer.jsp"/>
 </body>
 </html>

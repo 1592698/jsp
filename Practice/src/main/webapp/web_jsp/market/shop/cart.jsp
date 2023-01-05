@@ -15,7 +15,7 @@ String cartId = session.getId();%>
 
 </head>
 <body>
-	<jsp:include page="menu.jsp"/>
+	<jsp:include page="../inc/menu.jsp"/>
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">장바구니</h1>
@@ -106,6 +106,6 @@ String cartId = session.getId();%>
 
 </script>
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="../inc/footer.jsp"/>
 </body>
 </html>

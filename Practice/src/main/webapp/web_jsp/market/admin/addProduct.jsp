@@ -4,14 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
-<script type="text/javascript" src="./resources/js/validation.js" defer></script>
+<link rel="stylesheet" href ="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script type="text/javascript" src="../resources/js/validation.js" defer></script>
 <meta charset="UTF-8">
 <title>상품등록</title>
 
 </head>
 <body>
-	<jsp:include page="menu.jsp" />
+	<jsp:include page="../inc/menu.jsp" />
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">상품 등록</h1>

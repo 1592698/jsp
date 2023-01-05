@@ -13,13 +13,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="menu.jsp"/>
+	<jsp:include page="../inc/menu.jsp"/>
 	<div class="jumbotron">
 		<div class="container">
 			<h1 class="display-3">상품 수정</h1>
 		</div>
 	</div>
-	<%@ include file="dbconn.jsp" %>
+	<%@ include file="../inc/dbconn.jsp" %>
 	<%
 		String productId = request.getParameter("id");
 	
