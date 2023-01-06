@@ -25,7 +25,7 @@
             <%=tagline%>
          </h3>
          <%
-            Date day = new Date();
+            Date day = new Date();																						
             String am_pm;
             int hour = day.getHours();
             int minute = day.getMinutes();

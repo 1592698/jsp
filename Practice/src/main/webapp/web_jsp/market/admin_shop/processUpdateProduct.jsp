@@ -16,7 +16,7 @@
 	}
 	
 	String filename="";
-	String encType="utf-8"; //인코딩 타입
+	String encType="UTF-8"; //인코딩 타입
 	int maxSize = 5 *1024 *1024; //최대 업르도될 파일의 크기 5mb
 
 	MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, encType, new DefaultFileRenamePolicy());
