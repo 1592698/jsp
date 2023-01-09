@@ -24,6 +24,7 @@
 						<li class="nav-item"><a class="nav-link" href="<c:url value="./updateAdmin.jsp"/>">정보수정</a></li>
 						<li class="nav-item"><a class="nav-link" href="<c:url value="./memberList.jsp"/>">회원목록</a></li>
 						<li class="nav-item"><a class="nav-link" href="<c:url value="./addProduct.jsp"/>">상품등록</a></li>
+						
 						<li class="nav-item"><a class="nav-link" href="<c:url value="./editProduct.jsp?edit=update"/>">상품수정</a></li>
 						<li class="nav-item"><a class="nav-link" href="<c:url value="./editProduct.jsp?edit=delete"/>">상품삭제</a></li>
 			</ul>

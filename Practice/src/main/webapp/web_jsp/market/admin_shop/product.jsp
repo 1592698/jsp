@@ -1,9 +1,6 @@
-<%@page import="market.ver01.dao.ProductDAO"%>
-<%@page import="market.ver01.dao.CartDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="market.ver01.dto.Product" %>
-
 <%--jsp:useBean id="productDAO" class="market.ver01.dao.ProductRepository" scope="session" --%>
 
 <%--추가 부분 --%>
@@ -37,9 +34,9 @@
 </div>
 
 <%
-	String productId = request.getParameter("id"); //추가부분
-	ProductDAO productDAO = new ProductDAO();
-	Product product = productDAO.getProductById(productId); 
+	String id = request.getParameter("id"); //추가부분
+	ProductRepository dao = ProductRepository.getInstance();
+	Product product = dao.getProductById(id); 
 %>
 <div class="container">
 	<div class= "row">

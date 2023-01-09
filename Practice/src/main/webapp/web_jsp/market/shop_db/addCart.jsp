@@ -2,44 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="market.ver01.dto.Product"%>
-<%@ page import="market.ver01.dao.ProductRepository"%>
+<%@ page import="market.ver01.dao.ProductDAO" %>
+<%@ page import="market.ver01.dao.CartDAO" %>
 
 <%
-   String id = request.getParameter("id");
-   if (id == null || id.trim().equals("")) {
-      response.sendRedirect("Products.jsp");
+   String productId = request.getParameter("id");
+   if (productId == null || productId.trim().equals("")) {
+      response.sendRedirect("products.jsp");
       return;
    }
    
-   ProductRepository dao = ProductRepository.getInstance();
-   
-   Product product = dao.getProductById(id);
-   if (product == null) {
-      response.sendRedirect("exceptionNoProductId.jsp");
+   ProductDAO productDAO = new ProductDAO();
+	 Product productDTO = productDAO.getProductById(productId);
+   if (productDTO == null) {
+	   response.sendRedirect("exceptionNoProductId.jsp");
    }
-
-   //요청 파라미터 아이디의 상품을 담은 장바구니를 초기화 하도록 작성
-   ArrayList<Product> list = (ArrayList<Product>) session.getAttribute("cartlist");
-   if (list == null) {
-      list = new ArrayList<Product>();
-      session.setAttribute("cartlist", list);
-   }
+  
+   String orderNo= session.getId();
+   String memberId = (String) session.getAttribute("sessionId");
+   CartDAO cartDAO = new CartDAO();
+   boolean flag = cartDAO.updateCart(productDTO, orderNo, memberId);
    
-   int cnt = 0; //기존 장바구니에 담긴 상품인지 확인하기 위한 용도
-   Product goodsQnt = new Product();
-   for (int i=0; i<list.size(); i++) {
-      goodsQnt = list.get(i);
-      if (goodsQnt.getProductId().equals(id)) {
-         cnt++;
-         int orderQuantity = goodsQnt.getQuantity() + 1;
-         goodsQnt.setQuantity(orderQuantity);
-      }
-   }
-   
-   if (cnt == 0) {
-      product.setQuantity(1);
-      list.add(product);
-   }
-   
-   response.sendRedirect("product.jsp?id=" + id);
+   response.sendRedirect("product.jsp?id=" + productId);
 %> 

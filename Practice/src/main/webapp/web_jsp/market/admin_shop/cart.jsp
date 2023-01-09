@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.util.ArrayList" %>
 <%@ page import ="market.ver01.dto.Product" %>
-<%@ page import ="market.ver01.dao.CartDAO" %>
-<%@ page import ="market.ver01.dto.CartDTO" %>
-
+<%@ page import ="market.ver01.dao.ProductRepository" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,29 +43,35 @@ String cartId = session.getId();%>
 				
 				<%
 					int sum =0;
-					CartDAO cartDAO = new CartDAO();
-					String orderNo = session.getId();
+					ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
+					if(cartList ==null){
+						cartList=new ArrayList<Product>();
+						session.setAttribute("cartlist", cartList);
+					}
+					//for(int i=0; i<cartList.size(); i++){ //상품리스트 하나씩 출력하기
+					//	Product product = cartList.get(i);
+					//	int total =product.getUnitPrice() * product.getQuantity();
+					//	sum = sum + total;
 					
-					ArrayList<CartDTO> cartArrayList = cartDAO.getCartList(orderNo);
+					for(Product product : cartList){
+						int total = product.getUnitPrice() * product.getQuantity();
+						sum = sum + total;
 					
-					for(CartDTO cart : cartArrayList){
-						int total = cart.getP_unitPrice() * cart.getP_cnt();
-						sum +=total;
 					
-				%>
+					%>
 					<tr>
-						<td>
-						<input type="checkbox" name="chkID" value="<%=cart.getP_cartId() %>" onclick="setChkAlone(this);">
-						<%=cart.getP_productId() %>-<%=cart.getP_name() %> </td>
-						<td> <%=cart.getP_unitPrice() %></td>
-						<td> <%=cart.getP_cnt()%></td>
+						<td> <%=product.getProductId() %> - <%=product.getPname() %></td>
+						<td> <%=product.getUnitPrice() %></td>
+						<td> <%=product.getQuantity()%></td>
 						<td> <%=total %></td>
-						<td><span class="badge badge-danger"  onclick="removeCartById('<%=cart.getP_cartId()%>')">삭제</span></td>
+						<td><span class="badge badge-danger"  onclick="removeCartById('<%=product.getProductId()%>')">삭제</span></td>
 					
 					</tr>
+					
 					<%
 						}
 					%>		
+					
 					<tr>
 						<th></th>
 						<th></th>
