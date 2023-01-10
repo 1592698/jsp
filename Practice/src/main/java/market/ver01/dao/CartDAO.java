@@ -1,5 +1,6 @@
 package market.ver01.dao;
 
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +16,8 @@ public class CartDAO {
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-
+	private Statement statement = null;
+	
 	public CartDAO() {
 		connect();
 	}
@@ -142,6 +144,15 @@ public class CartDAO {
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, orderNo);
 		flag =preparedStatement.executeUpdate();
+		return flag !=0;
+	}
+	
+	public boolean deleteCartBySelId(String orderNo, String chkdId) throws SQLException{
+		//선택한 상품만 삭제
+		int flag = 0;
+		String sql = "DELETE FROM cart WHERE orderNo= '" + orderNo + "' AND cartId IN (" + chkdId + ")";
+		statement = connection.createStatement();
+		flag= statement.executeUpdate(sql);
 		return flag !=0;
 	}
 	
