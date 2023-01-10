@@ -64,6 +64,7 @@ public class CartDAO {
 		return flag == 1;
 	}
 
+
 	public ArrayList<CartDTO> getCartList(String orderNo) {
 		ArrayList<CartDTO> cartArrayList = new ArrayList<>();
 		String sql = "SELECT * FROM cart WHERE p_orderNo = ?";
@@ -91,7 +92,7 @@ public class CartDAO {
 		String orderNo = session.getId();
 		String id = (String) session.getAttribute("sessionId");
 		// 이전 로그인에 담은 상품 업데이트
-		String sql = "UPDATE cart SET orderNo= ? WHERE id = ?";
+		String sql = "UPDATE cart SET p_orderNo= ? WHERE p_memberId = ?";
 		try {
 		
 		preparedStatement =connection.prepareStatement(sql);
@@ -99,7 +100,7 @@ public class CartDAO {
 		preparedStatement.setString(2, id);
 		flag= preparedStatement.executeUpdate();
 		// 로그인 전에 담은 상품 업데이트
-		sql = "UPDATE cart SET id=? WHERE orderNo= ?";
+		sql = "UPDATE cart SET p_memberId=? WHERE p_orderNo= ?";
 		preparedStatement = connection.prepareStatement(sql);
 		
 		preparedStatement.setString(1,id);
@@ -111,4 +112,37 @@ public class CartDAO {
 		}
 		return flag != 0;
 	}
+	
+	public boolean deleteCartById(String orderNo, int cartId) {
+		//장바구니 개별 삭제
+		int flag = 0;
+		String sql = "SELECT * from cart WHERE p_orderNo=? and p_cartId=?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, orderNo);
+			preparedStatement.setInt(2, cartId);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				sql = "DELETE from cart WHERE p_cartId = ?";
+				preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, cartId);
+				flag = preparedStatement.executeUpdate();
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return flag == 1;
+	}
+
+	public boolean deleteCartAll(String orderNo) throws SQLException {
+		//장바구니 전체 삭제
+		int flag = 0;
+		String sql ="DELETE FROM cart WHERE p_orderNo = ? " ;
+		preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, orderNo);
+		flag =preparedStatement.executeUpdate();
+		return flag !=0;
+	}
+	
 }

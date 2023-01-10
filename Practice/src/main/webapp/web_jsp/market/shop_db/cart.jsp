@@ -24,18 +24,25 @@ String cartId = session.getId();%>
 	</div>
 	<div class="container">
 		<div class="row">
-			<table width="100%">
+			<table style ="width : 100%">
 				<tr>
-					<td align = "left"><span class="btn btn-danger"  onclick="deleteCart()">삭제하기</span></td>
+					<td align ="left">
+					<span class="btn btn-danger" onclick ="deleteCart();"> 전체 삭제하기 </span>
+					<span class="btn btn-danger" onclick ="deleteCartSel();"> 선택 삭제하기 </span>
+					
 					<td align ="right"><a href="./shippingInfo.jsp?cartId=<%=cartId %>" class="btn btn-success">주문하기</a></td>
 				
 				</tr>
 			</table>
 		</div>
-		<div stype="padding-top: 50px">
+		<div style="padding-top: 50px">
+		<script type="text/javascript" src="../resources/js/check_system.js"></script>
+		<form name="frmCart" method="get">
+			<input type="hidden" name="id">
+			<input type="text" name="chkdID">
 			<table class="table table-hover">
 				<tr>
-					<th>상품</th>
+					<th><input name="chkAll" type="checkbox" onClick="setChkAll();">상품</th>
 					<th>가격</th>
 					<th>수량</th>
 					<th>소계</th>
@@ -61,9 +68,10 @@ String cartId = session.getId();%>
 						<td> <%=cart.getP_unitPrice() %></td>
 						<td> <%=cart.getP_cnt()%></td>
 						<td> <%=total %></td>
-						<td><span class="badge badge-danger"  onclick="removeCartById('<%=cart.getP_cartId()%>')">삭제</span></td>
+						<td><span class="badge badge-danger"  onclick="removeCartByID('<%=cart.getP_cartId()%>')">삭제</span></td>
 					
 					</tr>
+					
 					<%
 						}
 					%>		
@@ -75,31 +83,52 @@ String cartId = session.getId();%>
 						<th></th>
 					</tr>		
 			</table>
-			<a href="./products.jsp" class="btn btn-secondary"> &laquo; 쇼핑계속하기</a>
-		</div>	
-		<form name="frmCart" method="post">
-			<input type="hidden" name="id">
 		</form>
+			
+		</div>	
 		
-		<script type="text/javascript">
+		
+		
+		<script>
+			window.onload=function() {
+				document.frmCart.chkAll.checked = true; //전체 체크 박스 체크
+				setChkAll(); // 목록의 체크박스 체크
+			}
+			
+			function frmName() {
+				return document.frmCart;
+			}
+		</script>
+
+		
+		<script>
 		const frm = document.frmCart;
-		let removeCartById= function(ID){
+		let removeCartByID= function(ID){
 			//개별삭제
 			if(confirm('삭제하시겠습니까?')){
-				frm.id.value = ID;
-				frm.action = "removeCart.jsp";
+				//frm.id.value = ID;
+				//frm.action = "removeCart.jsp";
+				//frm.submit();
+				location.href='removeCart.jsp?id=' + ID;
+			}
+		}
+		
+		let deleteCartSel = function() {
+			if(confirm('선택한 상품을 삭제하시겠습니까?')){
+				frm.action="removeCartSel.jsp";
 				frm.submit();
 			}
 		}
 	
 		let deleteCart=function() {
-			if(confirm("상품을 장바구니에서 삭제하시겠습니까?")){
-				frm.action="deleteCart.jsp";
-				frm.submit();
+			if(confirm("상품을 장바구니에서 전체 삭제하시겠습니까?")){
+				//frm.action="deleteCart.jsp";
+				//frm.submit();
+				location.href ='deleteCart.jsp';
 			}
 		}
-
 </script>
+	<a href="./products.jsp" class="btn btn-secondary"> &laquo; 쇼핑계속하기</a>
 	</div>
 	<jsp:include page="../inc/footer.jsp"/>
 </body>
